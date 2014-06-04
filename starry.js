@@ -93,9 +93,9 @@ function Starry (element) {
 
 			if (settings.stars == 5) {
 				settings.tooltips = [
-					'Worst',
-					'Bad',
-					'OK',
+					'Awful',
+					'Poor',
+					'Average',
 					'Good',
 					'Excellent'
 				];
@@ -203,7 +203,7 @@ function Starry (element) {
 				if (settings.multiple === false) {
 					var time;
 					time = new Date();
-					time.setTime(time.getTime() + (60*60*24*30*12*10));
+					time.setTime(time.getTime() + (1000*60*60*24*30*12*10));
 					document.cookie = "starry_" + elementName + "=true; expires=" + time.toGMTString();
 
 					readOnly = true;
