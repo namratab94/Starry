@@ -32,7 +32,7 @@
 }
 
 .Starry:hover > .Starry-readonly > .Starry-stars:last-child {
-	display: none;
+	/*display: none;*/
 }
 
 .Starry-star {
