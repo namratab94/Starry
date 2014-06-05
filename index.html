@@ -14,6 +14,7 @@
 
 		<script type='text/javascript' language='javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 		<script type='text/javascript' language='javascript' src='http://onehackoranother.com/projects/jquery/tipsy/javascripts/jquery.tipsy.js'></script>
+		<script type='text/javascript' language='javascript' src='JSON.js'></script>
 		<script type='text/javascript' language='javascript' src='starry.js'></script>
 		<script type='text/javascript' language='javascript'>
 			$(document).ready(function () {
@@ -21,8 +22,6 @@
 				rating = new Starry('#rating');
 				rating.init({
 					stars: 5,
-					userId: 0,
-					file: 'rate.php',
 					multiple: false,
 					startValue: 5,
 					readOnly: false,
@@ -32,15 +31,21 @@
 						'Average',
 						'Good',
 						'Excellent'
-					]
+					],
+					success: function (level) {
+						if (level == 1) {
+							alert('That\'s a real shame!');
+						}
+						if (level == 5) {
+							alert('Thank you!');
+						}
+					}
 				});
 
 				var starry_first;
 				starry_first = new Starry('#starry_first');
 				starry_first.init({
 					stars: 5,
-					userId: 0,
-					file: 'rate.php',
 					multiple: false,
 					startValue: 2.5,
 					readOnly: false,
@@ -65,8 +70,6 @@
 				starry_third = new Starry('#starry_third');
 				starry_third.init({
 					stars: 3,
-					userId: 0,
-					file: 'rate.php',
 					multiple: true,
 					startValue: 0,
 					readOnly: false,
@@ -81,11 +84,21 @@
 				starry_4 = new Starry('#starry_4');
 				starry_4.init({
 					stars: 10,
-					userId: 0,
-					file: 'rate.php',
 					multiple: true,
 					startValue: 6.35,
 					readOnly: false
+				});
+
+				var starry_5;
+				starry_5 = new Starry('#starry_5');
+				starry_5.init({
+					stars: 8,
+					multiple: true,
+					startValue: 2.7,
+					readOnly: false,
+					success: function (level) {
+						alert('You voted: ' + level);
+					}
 				});
 
 				$('.Starry-tooltip').tipsy({
@@ -139,13 +152,17 @@
 							<td><div id='starry_4' name='starry_4'></div></td>
 							<td>Ten stars, you can vote repeatedly.</td>
 						</tr>
+						<tr>
+							<td><div id='starry_5' name='starry_5'></div></td>
+							<td>Eight stars, you can vote repeatedly. An alert appears on success.</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v1.0.1.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.0.1</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v1.2.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.2.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -165,12 +182,12 @@
 				<hr />
 
 				<p><b>Initialize your star rating in your script file or an inline script tag</b></p>
-				<p><pre>$(document).ready(function () {<br />&thinsp;&thinsp;&thinsp;&thinsp;var starry = new Starry('#starry');<br />&thinsp;&thinsp;&thinsp;&thinsp;starry.init({<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;file: '../rate.php' // Path / URL to the rate file! [Parameters are transferred via POST! - rate, user]<br />&thinsp;&thinsp;&thinsp;&thinsp;});<br />});</pre></p>
+				<p><pre>$(document).ready(function () {<br />&thinsp;&thinsp;&thinsp;&thinsp;var starry = new Starry('#starry');<br />&thinsp;&thinsp;&thinsp;&thinsp;starry.init();<br />});</pre></p>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v1.0.1.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.0.1</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v1.2.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.2.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -192,18 +209,6 @@
 							<td>int</td>
 							<td>5</td>
 							<td>Number of rating stars. You can choose 3, 5, 6, 8 or 10.</td>
-						</tr>
-						<tr>
-							<td>userId</td>
-							<td>int</td>
-							<td>0</td>
-							<td>Id of the user who has voted.</td>
-						</tr>
-						<tr>
-							<td>file</td>
-							<td>string</td>
-							<td>false</td>
-							<td>File to which the rating will be sent.</td>
 						</tr>
 						<tr>
 							<td>multiple</td>
@@ -229,13 +234,19 @@
 							<td>false</td>
 							<td>Tooltips for the stars.</td>
 						</tr>
+						<tr>
+							<td>success</td>
+							<td>function</td>
+							<td>false</td>
+							<td>A function to be called if the request succeeds. The function gets passed one argument: Your rating (3 for example).</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v1.0.1.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.0.1</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v1.2.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v1.2.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -244,7 +255,13 @@
 
 				<hr />
 
-				<p><pre>&lt;?php<br /># rate.php<br /><br />/**<br />&nbsp;* In this example, we save the rating results in our database<br />&nbsp;*/<br /><br />// Read the rating result and the user id<br />$rate = intval($_POST['rate']);<br />$userId = intval($_POST['user']);<br /><br />// Create database connection<br />$db = new mysqli('localhost', 'root', 'password', 'database');<br /><br />// Our query<br />$query = "INSERT INTO `ratings` (`userId`, `rating`) VALUES (?, ?)";<br />$query = $db-&gt;prepare($query);<br />$query-&gt;bind_param('ii', $userId, $rate);<br />$query-&gt;execute();<br /><br />// Close the statement and the database connection<br />$query-&gt;close();<br />$db-&gt;close();<br />?&gt;</pre></p>
+				<p><b>Starry script</b></p>
+				<p><pre>$(document).ready(function () {<br />&thinsp;&thinsp;&thinsp;&thinsp;var starry = new Starry('#starry');<br />&thinsp;&thinsp;&thinsp;&thinsp;starry.init({<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;success: function (level) {<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;$.post('rate.php', {<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;rate: level<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;});<br />&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;}<br />&thinsp;&thinsp;&thinsp;&thinsp;});<br />});</pre></p>
+
+				<hr />
+
+				<p><b>PHP file <code>rate.php</code></b></p>
+				<p><pre>&lt;?php<br /># rate.php<br /><br />/**<br />&nbsp;* In this example, we save the rating results in our database<br />&nbsp;*/<br /><br />// Read the rating result<br />$rate = intval($_POST['rate']);<br /><br />// Create database connection<br />$db = new mysqli('localhost', 'root', 'password', 'database');<br /><br />// Our query<br />$query = "INSERT INTO `ratings` (`rating`) VALUES (?)";<br />$query = $db-&gt;prepare($query);<br />$query-&gt;bind_param('i', $rate);<br />$query-&gt;execute();<br /><br />// Close the statement and the database connection<br />$query-&gt;close();<br />$db-&gt;close();<br />?&gt;</pre></p>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
