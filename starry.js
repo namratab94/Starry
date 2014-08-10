@@ -44,6 +44,12 @@ function Starry (element) {
 
 	// Create the star rating
 	Starry.prototype.init = function (settings) {
+		if (typeof jQuery != 'function') {
+			alert('You must include jQuery!');
+
+			return false;
+		}
+
 		if (typeof $(this.element).attr('name') == 'undefined') {
 			return false;
 		}
