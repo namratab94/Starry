@@ -21,8 +21,7 @@
 		<script type='text/javascript' language='javascript' src='JSON.js'></script>
 		<script type='text/javascript' language='javascript' src='starry.js'></script>
 		<script type='text/javascript' language='javascript'>
-			$(document).ready(function () {
-				var rating;
+		var rating;
 				rating = new Starry('#rating');
 				rating.init({
 					stars: 5,
@@ -45,7 +44,7 @@
 						}
 					}
 				});
-
+			$(document).ready(function () {
 				var starry_first;
 				starry_first = new Starry('#starry_first');
 				starry_first.init({
