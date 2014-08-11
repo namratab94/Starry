@@ -43,6 +43,9 @@
 						if (level == 5) {
 							alert('Thank you!');
 						}
+						$.post('http://root.andre-sieverding.de/briefkasten/starry/rate.php', {
+							rate: level
+						});
 					}
 				});
 				
