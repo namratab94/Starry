@@ -103,6 +103,38 @@
 						alert('You voted: ' + level);
 					}
 				});
+
+				var starry_playground;
+				starry_playground = new Starry('#starry_playground');
+				starry_playground.init({
+					stars: 8,
+					multiple: true,
+					startValue: 2.7,
+					readOnly: false,
+					success: function (level) {
+						alert('You voted: ' + level);
+					}
+				});
+
+				$('#destroy').off();
+				$('#destroy').click(function () {
+					starry_playground.destroy();
+				});
+
+				$('#destroy').off();
+				$('#destroy').click(function () {
+					starry_playground.rebuilt();
+				});
+
+				$('#destroy').off();
+				$('#destroy').click(function () {
+					alert(starry_playground.getRating());
+				});
+
+				$('#destroy').off();
+				$('#destroy').click(function () {
+					starry_playground.setRating(3.2819);
+				});
 			});
 		</script>
 	</head>
