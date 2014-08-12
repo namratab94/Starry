@@ -131,9 +131,74 @@
 					alert(starry_playground.getRating());
 				});
 
-				$('#setRating').off();
-				$('#setRating').click(function () {
-					starry_playground.setRating(3.2819);
+				$('#enableMultiple').off();
+				$('#enableMultiple').click(function () {
+					starry_playground.update({
+						multiple: true
+					});
+				});
+
+				$('#disableMultiple').off();
+				$('#disableMultiple').click(function () {
+					starry_playground.update({
+						multiple: false
+					});
+				});
+
+				$('#enableReadonly').off();
+				$('#enableReadonly').click(function () {
+					starry_playground.update({
+						readOnly: true
+					});
+				});
+
+				$('#disableReadonly').off();
+				$('#disableReadonly').click(function () {
+					starry_playground.update({
+						readOnly: false
+					});
+				});
+
+				$('#enableTooltips').off();
+				$('#enableTooltips').click(function () {
+					starry_playground.update({
+						tooltips: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
+					});
+				});
+
+				$('#disableTooltips').off();
+				$('#disableTooltips').click(function () {
+					starry_playground.update({
+						tooltips: false
+					});
+				});
+
+				$('#addSuccess').off();
+				$('#addSuccess').click(function () {
+					starry_playground.update({
+						success: function (level) {
+							alert('You voted: ' + level);
+						}
+					});
+				});
+
+				$('#removeSuccess').off();
+				$('#removeSuccess').click(function () {
+					starry_playground.update({
+						success: false
+					});
+				});
+
+				$('#stars').off();
+				$('#stars').change(function () {
+					starry_playground.update({
+						stars: $('#stars').val()
+					});
+				});
+
+				$('#startVal').off();
+				$('#startVal').change(function () {
+					starry_playground.setRating($('#startVal').val());
 				});
 			});
 		</script>
@@ -208,10 +273,36 @@
 					</div>
 					<br />
 					<br />
-					<button id="destroy" class="btn btn-warning">Destroy Starry</button> 
-					<button id="rebuild" class="btn btn-warning">Rebuild Starry</button> 
-					<button id="getRating" class="btn btn-warning">Get the active rating</button> 
-					<button id="setRating" class="btn btn-warning">Set the rating to 3.2819</button>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="stars">Stars</label>
+								<input id="stars" type="number" class="form-control" value="20" />
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="startVal">Start value</label>
+								<input id="startVal" type="number" class="form-control" value="0" />
+							</div>
+						</div>
+					</div>
+					<br />
+					<button id="destroy" class="btn btn-default">Destroy Starry</button> 
+					<button id="rebuild" class="btn btn-default">Rebuild Starry</button> 
+					<button id="getRating" class="btn btn-default">Get active rating</button> 
+					<button id="enableMultiple" class="btn btn-default">Enable multiple rating</button>
+					<br />
+					<br />
+					<button id="disableMultiple" class="btn btn-default">Disable multiple rating</button> 
+					<button id="enableReadonly" class="btn btn-default">Enable readonly</button> 
+					<button id="disableReadonly" class="btn btn-default">Disable readonly</button> 
+					<button id="enableTooltips" class="btn btn-default">Enable tooltips</button>
+					<br />
+					<br />
+					<button id="disableTooltips" class="btn btn-default">Disable tooltips</button> 
+					<button id="addSuccess" class="btn btn-default">Add success function</button> 
+					<button id="removeSuccess" class="btn btn-default">Remove success function</button>
 				</div>
 			</div>
 		</div>
