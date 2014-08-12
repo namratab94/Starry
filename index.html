@@ -121,18 +121,18 @@
 					starry_playground.destroy();
 				});
 
-				$('#destroy').off();
-				$('#destroy').click(function () {
+				$('#rebuild').off();
+				$('#rebuild').click(function () {
 					starry_playground.rebuilt();
 				});
 
-				$('#destroy').off();
-				$('#destroy').click(function () {
+				$('#getRating').off();
+				$('#getRating').click(function () {
 					alert(starry_playground.getRating());
 				});
 
-				$('#destroy').off();
-				$('#destroy').click(function () {
+				$('#setRating').off();
+				$('#setRating').click(function () {
 					starry_playground.setRating(3.2819);
 				});
 			});
@@ -204,6 +204,7 @@
 
 				<div style="text-align: center;">
 					<div id='starry_playground' name='starry_playground'></div>
+					<br />
 					<br />
 					<button id="destroy" class="btn btn-warning">Destroy Starry</button> 
 					<button id="rebuild" class="btn btn-warning">Rebuild Starry</button> 
