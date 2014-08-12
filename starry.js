@@ -287,16 +287,11 @@ function Starry (element) {
 		if (this.stars === true) {
 			this.destroy();
 			
-			var firstSettings;
 			var settings;
-
-			firstSettings = this.initSettings;
 			settings = this.initSettings;
 			settings.startValue = rating;
 
 			this.init(settings);
-			
-			this.initSettings = firstSettings;
 		}
 	}
 
