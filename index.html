@@ -407,7 +407,7 @@
 				<hr />
 
 				<p><b>PHP file <code>rate.php</code></b></p>
-				<p><pre>&lt;?php<br /># rate.php<br /><br />/**<br />&nbsp;* In this example, we save the rating results in our database<br />&nbsp;*/<br /><br />// Read the rating result<br />$rate = intval($_POST['rate']);<br /><br />// Create database connection<br />$db = new mysqli('localhost', 'root', 'password', 'database');<br /><br />// Our query<br />$query = "INSERT INTO `ratings` (`rating`) VALUES (?)";<br />$query = $db-&gt;prepare($query);<br />$query-&gt;bind_param('i', $rate);<br />$query-&gt;execute();<br /><br />// Close the statement and the database connection<br />$query-&gt;close();<br />$db-&gt;close();<br />?&gt;</pre></p>
+				<p><pre>&lt;?php<br /># rate.php<br /><br />/**<br />&nbsp;* In this example, we save the rating results in our database<br />&nbsp;*/<br /><br />// Read the rating result<br />$rate = (int)$_POST['rate'];<br /><br />// Create database connection<br />$db = new mysqli('localhost', 'root', 'password', 'database');<br /><br />// Our query<br />$query = "INSERT INTO `ratings` (`rating`) VALUES (?)";<br />$query = $db-&gt;prepare($query);<br />$query-&gt;bind_param('i', $rate);<br />$query-&gt;execute();<br /><br />// Close the statement and the database connection<br />$query-&gt;close();<br />$db-&gt;close();<br />?&gt;</pre></p>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
