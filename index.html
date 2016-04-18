@@ -28,6 +28,7 @@
 					multiple: false,
 					startValue: 5,
 					readOnly: false,
+					iconPath: 'icons/1/',
 					tooltips: [
 						'Awful',
 						'Poor',
@@ -52,6 +53,7 @@
 					multiple: false,
 					startValue: 2.5,
 					readOnly: false,
+					iconPath: 'icons/2/',
 					tooltips: [
 						'Awful',
 						'Poor',
@@ -66,7 +68,8 @@
 				starry_second.init({
 					stars: 6,
 					startValue: 3.6,
-					readOnly: true
+					readOnly: true,
+					iconPath: 'icons/3/'
 				});
 
 				var starry_third;
@@ -76,6 +79,7 @@
 					multiple: true,
 					startValue: 0,
 					readOnly: false,
+					iconPath: 'icons/4/',
 					tooltips: [
 						'Bad',
 						'OK',
@@ -89,7 +93,8 @@
 					stars: 10,
 					multiple: true,
 					startValue: 6.35,
-					readOnly: false
+					readOnly: false,
+					iconPath: 'icons/5/'
 				});
 
 				var starry_5;
@@ -99,6 +104,7 @@
 					multiple: true,
 					startValue: 2.7,
 					readOnly: false,
+					iconPath: 'icons/6/',
 					success: function (level) {
 						alert('You voted: ' + level);
 					}
@@ -111,6 +117,7 @@
 					multiple: true,
 					startValue: 0,
 					readOnly: false,
+					iconPath: 'icons/1/',
 					success: function (level) {
 						//
 					}
@@ -157,6 +164,20 @@
 					starry_playground.update({
 						readOnly: false
 					});
+				});
+
+				$('#switchIcon').off();
+				$('#switchIcon').click(function () {
+					alert('Coming soon...');
+					/*
+					var random;
+					random = 1 + parseInt(Math.random() * ((6 + 1) - 1));
+					random = 'icons/' + random + '/';
+
+					starry_playground.update({
+						iconPath: random
+					});
+					*/
 				});
 
 				$('#enableTooltips').off();
@@ -258,7 +279,7 @@
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v2.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v2.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v3.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v3.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -302,13 +323,14 @@
 					<br />
 					<button id="disableTooltips" class="btn btn-default">Disable tooltips</button> 
 					<button id="addSuccess" class="btn btn-default">Add success function</button> 
-					<button id="removeSuccess" class="btn btn-default">Remove success function</button>
+					<button id="removeSuccess" class="btn btn-default">Remove success function</button> 
+					<button id="switchIcon" class="btn btn-warning"><i class="fa fa-picture-o"></i> Switch icons</button>
 				</div>
 			</div>
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v2.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v2.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v3.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v3.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -333,7 +355,7 @@
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v2.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v2.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v3.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v3.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
@@ -375,6 +397,12 @@
 							<td>Determines whether the user can submit ratings.</td>
 						</tr>
 						<tr>
+							<td>iconPath</td>
+							<td>string</td>
+							<td>icons/</td>
+							<td>Path to rating icons.</td>
+						</tr>
+						<tr>
 							<td>tooltips</td>
 							<td>array</td>
 							<td>false</td>
@@ -392,7 +420,7 @@
 		</div>
 		<div style='width: 100%; background-color: #ffc600; padding: 40px; color: #ffffff; text-shadow: 0px -1px 0px #f2a500;'>
 			<div style='width: 800px; margin: 0 auto !important; text-align: center;'>
-				<a href='https://github.com/Teddy95/Starry/archive/v2.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v2.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
+				<a href='https://github.com/Teddy95/Starry/archive/v3.1.0.zip' class='btn btn-warning'><h4><i class='fa fa-download'></i> Download v3.1.0</h4></a> <a href='https://github.com/Teddy95/Starry' class='btn btn-warning'><h4><i class='fa fa-github'></i> View source on Github</h4></a>
 			</div>
 		</div>
 		<div style='width: 100%; padding: 40px;'>
