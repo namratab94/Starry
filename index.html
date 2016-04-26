@@ -51,10 +51,11 @@
 				starry_first = new Starry('#starry_first');
 				starry_first.init({
 					stars: 5,
+					starSize: 24,
 					multiple: false,
 					startValue: 2.5,
 					readOnly: false,
-					iconPath: 'icons/7/',
+					iconPath: 'icons/8/',
 					tooltips: [
 						'Awful',
 						'Poor',
@@ -68,19 +69,21 @@
 				starry_second = new Starry('#starry_second');
 				starry_second.init({
 					stars: 6,
+					starSize: 24,
 					startValue: 3.6,
 					readOnly: true,
-					iconPath: 'icons/7/'
+					iconPath: 'icons/8/'
 				});
 
 				var starry_third;
 				starry_third = new Starry('#starry_third');
 				starry_third.init({
 					stars: 3,
+					starSize: 24,
 					multiple: true,
 					startValue: 0,
 					readOnly: false,
-					iconPath: 'icons/7/',
+					iconPath: 'icons/8/',
 					tooltips: [
 						'Bad',
 						'OK',
@@ -92,20 +95,22 @@
 				starry_4 = new Starry('#starry_4');
 				starry_4.init({
 					stars: 10,
+					starSize: 24,
 					multiple: true,
 					startValue: 6.35,
 					readOnly: false,
-					iconPath: 'icons/7/'
+					iconPath: 'icons/8/'
 				});
 
 				var starry_5;
 				starry_5 = new Starry('#starry_5');
 				starry_5.init({
 					stars: 8,
+					starSize: 24,
 					multiple: true,
 					startValue: 2.7,
 					readOnly: false,
-					iconPath: 'icons/7/',
+					iconPath: 'icons/8/',
 					success: function (level) {
 						alert('You voted: ' + level);
 					}
